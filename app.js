@@ -39,11 +39,11 @@ app.post('/login', (req,res)=>{
     phone = req.body.phone
     token = req.body.token
 
-    
-
-    const api_key = "AIzaSyCCifumMfBcy8ugxcED55JZdDcuSh35HgM";
+    console.log(token)
 
     
+
+const api_key = "AIzaSyCCifumMfBcy8ugxcED55JZdDcuSh35HgM";
 const url = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${api_key}`;
 const requestData = {
   idToken: token
@@ -52,7 +52,7 @@ const requestData = {
 axios.post(url, requestData)
   .then(response => {
 
-    console.log(response.data)
+    
     if (response.data.users[0].phoneNumber == phone) {
 
         req.session.phone = phone;
@@ -66,7 +66,8 @@ axios.post(url, requestData)
 
   })
   .catch(error => {
-    console.error(error);
+    
+    res.status(400).json(error)
   });
 
 
