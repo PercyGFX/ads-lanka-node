@@ -5,6 +5,7 @@ const {connection} = require('../database')
 const authentication = require('../authentication')
 const login  = require('../controllers/loginController');
 
+
 router.get('/login',  (req, res) => {
     if (req.session.phone) {
       res.redirect('/');

@@ -1,7 +1,7 @@
 function authMiddleware(req, res, next) {
    
     if (!req.session.phone) {
-      return res.redirect('/login');
+      return res.redirect(303, '/');
     }
   
     

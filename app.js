@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
-const mysql = require('mysql2')
 const login = require('./routes/login');
 const index = require('./routes/index');
 const post = require('./routes/post');
 const session = require('express-session')
 
 
+
+
 app.use(express.urlencoded({extended: false}));
+
 
 app.use(session({
   secret: 'damnthisissosecret',
