@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {connection} = require('../database')
 const authentication = require('../authentication')
 const loginController = require('../controllers/loginController');
 
