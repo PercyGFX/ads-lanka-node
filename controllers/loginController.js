@@ -1,5 +1,4 @@
 const axios = require('axios');
-const session = require('express-session')
 
 exports.login = (req, res) => {
   if (req.session.phone) {

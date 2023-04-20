@@ -11,6 +11,17 @@ router.get('/login', (req, res) => {
     res.sendFile(loginFilePath);
     }
   });
+
+  router.get('/logout', (req,res)=> {
+
+    if (req.session.phone) {
+      delete req.session.phone;
+      
+    }
+
+    res.redirect('/');
+
+  })
   
   router.post('/login', loginController.login);
   

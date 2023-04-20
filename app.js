@@ -3,6 +3,7 @@ const app = express()
 const mysql = require('mysql2')
 const login = require('./routes/login');
 const index = require('./routes/index');
+const post = require('./routes/post');
 const session = require('express-session')
 
 
@@ -17,6 +18,8 @@ app.use(session({
 
 app.use('/', login);
 app.use('/', index);
+app.use('/', post);
+
 
 
 app.listen(5000, () => {
