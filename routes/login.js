@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const {connection} = require('../database')
 const authentication = require('../authentication')
-const loginController = require('../controllers/loginController');
+const login  = require('../controllers/loginController');
 
 router.get('/login',  (req, res) => {
     if (req.session.phone) {
@@ -25,7 +25,7 @@ router.get('/login',  (req, res) => {
 
   })
   
-  router.post('/login',  loginController.login);
+  router.post('/login',  login);
 
   router.get('/usercp', authentication, (req,res)=>{
 
