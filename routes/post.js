@@ -2,12 +2,23 @@ const express = require('express');
 const router = express.Router();
 const authentication = require('../authentication')
 const expressValidator = require('express-validator');
+var path = require('path')
 
 
 
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+    }
+  })
+  
+  var upload = multer({ storage: storage });
 
 router.post('/postad', upload.single('file'), 
 [
