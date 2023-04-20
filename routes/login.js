@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const authentication = require('../authentication')
 const loginController = require('../controllers/loginController');
 
-router.get('/login', (req, res) => {
+router.get('/login',  (req, res) => {
     if (req.session.phone) {
       res.redirect('/');
     } else {
@@ -23,6 +24,12 @@ router.get('/login', (req, res) => {
 
   })
   
-  router.post('/login', loginController.login);
+  router.post('/login',  loginController.login);
+
+  router.get('/usercp', authentication, (req,res)=>{
+
+    res.send('this is user panel')
+
+  })
   
   module.exports = router;
