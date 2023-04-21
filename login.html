@@ -229,36 +229,31 @@ loginphone.onclick = function() {
 
      //===================POST================
      function sendDatatoServerPhp(phone, token) {
-    // create a form element
-    var form = document.createElement("form");
+  // create the data object
+  var data = {
+    phone: phone,
+    token: token
+  };
 
-    // set the form attributes
-    form.setAttribute("method", "POST");
-    form.setAttribute("action", "/login");
+  // create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
 
-    // create a hidden input field for the phone number
-    var phoneField = document.createElement("input");
-    phoneField.setAttribute("type", "hidden");
-    phoneField.setAttribute("name", "phone");
-    phoneField.setAttribute("value", phone);
+  // set the request method and URL
+  xhr.open("POST", "/login");
 
-    // create a hidden input field for the token
-    var tokenField = document.createElement("input");
-    tokenField.setAttribute("type", "hidden");
-    tokenField.setAttribute("name", "token");
-    tokenField.setAttribute("value", token);
+  // set the request headers
+  xhr.setRequestHeader("Content-Type", "application/json");
 
+  // set the onload function to redirect to /
+  xhr.onload = function() {
+    window.location.href = "/";
+  };
 
+  // convert the data object to JSON string
+  var json = JSON.stringify(data);
 
-    // append the phone and CSRF fields to the form
-    form.appendChild(phoneField);
-    form.appendChild(tokenField);
-
-    // append the form to the document body
-    document.body.appendChild(form);
-
-    // submit the form
-    form.submit();
+  // send the request with the JSON data
+  xhr.send(json);
 }
   //===========================END=======================
 

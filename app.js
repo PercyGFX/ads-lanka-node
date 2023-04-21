@@ -4,11 +4,14 @@ const login = require('./routes/login');
 const index = require('./routes/index');
 const post = require('./routes/post');
 const session = require('express-session')
+const bodyParser = require('body-parser');
 
 
 
 
 app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 
 
 app.use(session({
