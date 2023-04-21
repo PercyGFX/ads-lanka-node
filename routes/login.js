@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const {connection} = require('../database')
-const authentication = require('../authentication')
+const authentication = require('../middleware/authentication')
 const login  = require('../controllers/loginController');
 
 
