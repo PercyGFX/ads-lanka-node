@@ -1,5 +1,6 @@
 const expressValidator = require('express-validator');
-const connection = require('../database')
+const connection = require('../database');
+
 
 const postadController = (req, res) => {
   const errors = expressValidator.validationResult(req);
@@ -64,4 +65,20 @@ connection.query(sql, [phone], (err, results) => {
   }
 };
 
-module.exports = postadController;
+const indexposts = (req, res) => {
+  const page = req.params.pageid || 1; // default page number is 1
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
+  const q = `SELECT * FROM ads LIMIT ${limit} OFFSET ${offset}`;
+
+  connection.execute(q, (err, result) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.send(result);
+    }
+  });
+};
+
+module.exports = {postadController , indexposts};

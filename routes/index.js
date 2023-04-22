@@ -1,15 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const {indexposts} = require('../controllers/postContoller');
 
-router.get('/', (req, res) => {
-   
 
-    if(req.session.phone) {
-      res.send('hello' + req.session.phone)
-    } else{
-
-      res.send('please login')
-    }
-  });
+router.get('/:pageid', indexposts );
 
   module.exports = router;
