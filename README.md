@@ -1,5 +1,6 @@
 # Node + Express API for an ads Website
 
-Login API - POST /login -  { phone: "phone", token: "firebase token" }
+Login -  /login -  { phone: "phone", token: "firebase token" }
+Index Posts - /{page id}
 
 
